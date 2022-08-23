@@ -1,3 +1,7 @@
+var playerScore = 0;
+var computerScore = 0;
+var tieGames = 0;
+
 //Randomly choose between rock, paper, and scissors
 function getComputerChoice() {
     switch (Math.floor(Math.random() * 3)) {
@@ -13,9 +17,14 @@ function getComputerChoice() {
 //assuming that the choices are not the same
 //true for player win, false for computer win
 function determineWinner(player, computer) {
-    return (player == 'Rock' && computer == 'Scissors' ||
-            player == 'Scissors' && computer == 'Paper' ||
-            player == 'Paper' && computer == 'Rock');
+    if (player == 'Rock' && computer == 'Scissors' ||
+        player == 'Scissors' && computer == 'Paper' ||
+        player == 'Paper' && computer == 'Rock') {
+            playerScore++;
+            return true;
+        }
+    computerScore++;
+    return false;
 }
 
 //plays one round of rock, paper, scissors
@@ -26,9 +35,10 @@ function playRound(playerSelection, computerSelection) {
     ans += ('Player: ' + playerSelection + '<br>Computer: ' + computerSelection + '<br><br>');
 
     if (playerSelection == computerSelection) {
+        tieGames++;
         ans += 'It\'s a tie.';
     } else {
-        ans += determineWinner(playerSelection, computerSelection) ? 'You Won!' : 'Computer wins';
+        ans += determineWinner(playerSelection, computerSelection) ? 'You win this round' : 'Computer wins';
     }
     return ans;
 }
@@ -38,6 +48,12 @@ const result = document.querySelector('.result');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        result.innerHTML = playRound(button.textContent.trim(), getComputerChoice());
+        result.innerHTML = playRound(button.textContent.trim(), getComputerChoice()) + 
+                            '<br><br> Player Score: ' + playerScore +
+                            '<br> Computer Score: ' + computerScore +
+                            '<br> Tie Games: ' + tieGames;
+        if (playerScore == 5 || computerScore == 5) {
+
+        }
     })
 })
