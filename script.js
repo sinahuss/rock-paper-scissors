@@ -1,5 +1,3 @@
-var input = 'Rock';
-
 //Randomly choose between rock, paper, and scissors
 function getComputerChoice() {
     switch (Math.floor(Math.random() * 3)) {
@@ -22,28 +20,24 @@ function determineWinner(player, computer) {
 
 //plays one round of rock, paper, scissors
 function playRound(playerSelection, computerSelection) {
+    let ans = '';
     //let input = prompt('Choose between Rock, Paper, or Scissors');
     //playerSelection = input[0].toUpperCase() + input.slice(1).toLowerCase();
-    console.log('Player: ' + playerSelection);
-    console.log('Computer: ' + computerSelection);
+    ans += ('Player: ' + playerSelection + '<br>Computer: ' + computerSelection + '<br><br>');
 
     if (playerSelection == computerSelection) {
-        return 'It\'s a tie.';
+        ans += 'It\'s a tie.';
     } else {
-        return determineWinner(playerSelection, computerSelection) ? 'Player win' : 'Computer win';
+        ans += determineWinner(playerSelection, computerSelection) ? 'You Won!' : 'Computer wins';
     }
-}
-
-function game(playerSelection, rounds) {
-    for(let i = 0; i < rounds; i++) {
-        console.log(playRound(playerSelection, getComputerChoice()));
-    }
+    return ans;
 }
 
 const buttons = document.querySelectorAll('button');
+const result = document.querySelector('.result');
 
 buttons.forEach((button) => {
     button.addEventListener('click', () => {
-        game(button.id, 1)
+        result.innerHTML = playRound(button.textContent.trim(), getComputerChoice());
     })
 })
