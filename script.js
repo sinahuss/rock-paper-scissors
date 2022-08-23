@@ -1,5 +1,3 @@
-document.write('hello');
-
 var input = 'Rock';
 
 //Randomly choose between rock, paper, and scissors
@@ -26,8 +24,8 @@ function determineWinner(player, computer) {
 function playRound(playerSelection, computerSelection) {
     //let input = prompt('Choose between Rock, Paper, or Scissors');
     //playerSelection = input[0].toUpperCase() + input.slice(1).toLowerCase();
-    console.log(playerSelection);
-    console.log(computerSelection);
+    console.log('Player: ' + playerSelection);
+    console.log('Computer: ' + computerSelection);
 
     if (playerSelection == computerSelection) {
         return 'It\'s a tie.';
@@ -36,10 +34,16 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-function game(rounds) {
-    for(i=0;i<rounds;i++) {
-        console.log(playRound(input, getComputerChoice()));
+function game(playerSelection, rounds) {
+    for(let i = 0; i < rounds; i++) {
+        console.log(playRound(playerSelection, getComputerChoice()));
     }
 }
 
-game(5);
+const buttons = document.querySelectorAll('button');
+
+buttons.forEach((button) => {
+    button.addEventListener('click', () => {
+        game(button.id, 1)
+    })
+})
