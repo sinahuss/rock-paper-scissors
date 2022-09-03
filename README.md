@@ -2,7 +2,7 @@
 
 For access to the live web page, I used [GitHub Pages](https://sinahuss.github.io/rock-paper-scissors/)  
 
-I've created a Rock Paper Scissors game as and intro to JavaScript and the DOM. Below are my thoughts and list of points I've learned while completing this project.  
+I've created a Rock Paper Scissors game as an intro to JavaScript and the DOM. Below are my thoughts and list of points I've learned while completing this project.  
 
 - I've had previous experience with programming through Java, so I knew the basics
 - Using the DOM was something that was new to me, and it was interesting learning how to 
