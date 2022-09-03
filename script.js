@@ -38,7 +38,7 @@ function playRound(playerSelection, computerSelection) {
         tieGames++;
         ans += 'It\'s a tie.';
     } else {
-        ans += determineWinner(playerSelection, computerSelection) ? 'You win this round' : 'Computer wins';
+        ans += determineWinner(playerSelection, computerSelection) ? 'You win this round!' : 'Computer wins.';
     }
     return ans;
 }
@@ -54,7 +54,7 @@ buttons.forEach((button) => {
                             '<br> Tie Games: ' + tieGames;
         if (playerScore == 5 || computerScore == 5) {
             result.innerHTML = playerScore == 5 ? 'You win the game!' : 
-                                'Computer wins the game';
+                                'Computer wins the game.';
             playerScore = 0;
             computerScore = 0;
             tieGames = 0;
